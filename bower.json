@@ -19,9 +19,6 @@
     "angular-foundation":"0.5.1",
     "angular-upload":"latest",
     "ngstorage":"0.3.0",
-    "jquery": "1.11.2",
-    "requirejs": "2.1.15",
-    "domready": "1.0.7",
     "foundation":"latest",
     "foundation-icon-fonts":"latest"
   }
