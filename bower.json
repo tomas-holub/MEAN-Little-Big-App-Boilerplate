@@ -22,8 +22,6 @@
     "jquery": "1.11.2",
     "requirejs": "2.1.15",
     "domready": "1.0.7",
-    "jquery-masonry":"v2.1.08",
-    "pure":"latest",
     "foundation":"latest",
     "foundation-icon-fonts":"latest"
   }
