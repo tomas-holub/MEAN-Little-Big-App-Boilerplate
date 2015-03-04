@@ -21,5 +21,8 @@
     "ngstorage":"0.3.0",
     "foundation":"latest",
     "foundation-icon-fonts":"latest"
+  },
+  "devDependencies":{
+    "angular-mocks":"1.2.x"
   }
 }
