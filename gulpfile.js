@@ -62,18 +62,6 @@ var livereload = require('gulp-livereload');
 var karma = require('gulp-karma');
 var protractor = require("gulp-protractor").protractor;
 
-gulp.task('e2e', function(){
-    return gulp.src(["tests/*.js"])
-        .pipe(protractor({
-            configFile: "conf.js",
-            args: ['--baseUrl', 'http://127.0.0.1:8000']
-        }))
-        .on('error', function(e) { throw e })
-
-});
-
-
-
 // By gulp-karma karma.conf.js files array is replaced with:
 var testFiles = [
     'bower_components/angular/angular.js',
@@ -93,6 +81,16 @@ gulp.task('test', function() {
             // Make sure failed tests cause gulp to exit non-zero
           //  throw err;
         });
+});
+
+gulp.task('e2e', function(){
+    return gulp.src(["tests/*.js"])
+        .pipe(protractor({
+            configFile: "conf.js",
+            args: ['--baseUrl', 'http://127.0.0.1:8000']
+        }))
+        .on('error', function(e) { throw e })
+
 });
 
 gulp.task('less', function () {
@@ -118,9 +116,15 @@ gulp.task('pure', function() {
     gulp.src('client/index.html')
         .pipe(gulp.dest('public'));
 });
+gulp.task('fonts', function() {
+    gulp.src([
+        'bower_components/foundation-icon-fonts/foundation-icons.woff',
+        'bower_components/foundation-icon-fonts/foundation-icons.ttf'
+    ]).pipe(gulp.dest('public/css'));
+});
 
 
 
 
 gulp.task('dev', ['less', 'pure','test','e2e']);
-gulp.task('prod', ['less', 'minify']);
+gulp.task('prod', ['less', 'minify','fonts']);
