@@ -12,12 +12,6 @@
 
 </head>
 <body>
-<div ng-controller="MainController">
-    <input type="text" ng-model="count"/>
-    {{result}}
-</div>
-
-
 <div class="parallax-background">
     <div class="intro-text">
         Welcome!
@@ -56,6 +50,12 @@
         tongue tail tri-tip kielbasa ham hock frankfurter meatball cow brisket. Shankle sausage filet mignon biltong
         pork loin. Short ribs spare ribs chuck pig meatloaf shoulder cow tail brisket biltong ball tip ham hock.</p>
 </div>
+
+<div ng-controller="MainController">
+    <input type="text" ng-model="count"/>
+    {{result}}
+</div>
+
 <!-- build:js /js/app.minified.js -->
 <script src="../bower_components/angular/angular.js"></script>
 <script src="js/client.js"></script>
