@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./server/app",
     "postinstall": "HOME=$OPENSHIFT_DATA_DIR ./node_modules/bower/bin/bower install"
   },
-  "main": "./bin/www",
+  "main": "./server/app",
   "dependencies": {
     "bower": "^1.3.2",
     "body-parser": "~1.10.2",
