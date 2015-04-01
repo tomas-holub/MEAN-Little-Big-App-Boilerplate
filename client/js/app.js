@@ -1,8 +1,10 @@
 define([
     'angular',
-    'angular-route'
+    'angular-route',
+    'controllers/_loader'
 ], function (angular) {
     return angular.module('tom', [
-        'ngRoute'
+        'ngRoute',
+        'app.controllers'
     ]);
 });
