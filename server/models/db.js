@@ -1,7 +1,9 @@
 var mongoose         = require('mongoose');
 var dbName           = 'tom';
-var connectionString = 'mongodb://localhost:27017/' + dbName;
+var dbHost = process.env.OPENSHIFT_MONGODB_DB_HOST || 'mongodb://localhost';
+var dbPort = process.env.OPENSHIFT_MONGODB_DB_PORT || '27017';
 
+var connectionString = dbHost + ':' + dbPort + '/' + dbName;
 mongoose.connect(connectionString);
 
 mongoose.connection.on('connected', function () {
