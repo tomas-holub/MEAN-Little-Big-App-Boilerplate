@@ -1,56 +1,3 @@
-//var gulp = require('gulp');
-//var gutil = require('gulp-util');
-//var less = require('gulp-less');
-//var path = require('path');
-//var uglify = require('gulp-uglify');
-//var watch = require('gulp-watch');
-//var concat = require('gulp-concat');
-//var notify = require('gulp-notify');
-//
-//
-//
-//
-//
-//gulp.task('less', function () {
-//    return gulp.src('./less/**/*.less')
-//        .pipe(less({
-//            paths: [path.join(__dirname, 'less', 'includes')]
-//        }))
-//        .pipe(gulp.dest('./public/stylesheets'));
-//});
-//
-//
-//// uglify task
-//gulp.task('js', function () {
-//    // main app js file
-//    gulp.src('./assets/js/app.js')
-//        .pipe(uglify())
-//        .pipe(concat("app.min.js"))
-//        .pipe(gulp.dest('./assets/js/'));
-//
-//    // create 1 vendor.js file from all vendor plugin code
-//    gulp.src('./assets/js/vendor/**/*.js')
-//        .pipe(uglify())
-//        .pipe(concat("vendor.js"))
-//        .pipe(gulp.dest('./assets/js'))
-//        .pipe(notify({message: "Javascript is now ugly!"}));
-//});
-//
-//gulp.task('watch', function () {
-//    // watch scss files
-//    gulp.watch('./less/*.less', function () {
-//        gulp.run('less');
-//    });
-//
-//    gulp.watch('./assets/js/**/*.js', function () {
-//        gulp.run('js');
-//    });
-//});
-//
-//gulp.task('default', ['less', 'js', 'watch']);
-//gulp.task('production', ['less']);
-
-
 var gulp = require('gulp');
 var usemin = require('gulp-usemin');
 var uglify = require('gulp-uglify');
@@ -61,70 +8,93 @@ var watch = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var karma = require('gulp-karma');
 var protractor = require("gulp-protractor").protractor;
+var amdOptimize = require('amd-optimize');
+var concat = require('gulp-concat');
+var del = require('del');
+var runSequence = require('run-sequence');
+//// By gulp-karma karma.conf.js files array is replaced with:
+//var testFiles = [
+//    'bower_components/angular/angular.js',
+//    'bower_components/angular-mocks/angular-mocks.js',
+//    'public/js/*.js',
+//    'tests/unit/*.js'
+//];
+//
+//gulp.task('test', function() {
+//    // Be sure to return the stream
+//    return gulp.src(testFiles)
+//        .pipe(karma({
+//            configFile: 'karma.conf.js',
+//            action: 'run'
+//        }))
+//        .on('error', function(err) {
+//            // Make sure failed tests cause gulp to exit non-zero
+//          //  throw err;
+//        });
+//});
+//
+//gulp.task('e2e', function(){
+//    return gulp.src(["tests/*.js"])
+//        .pipe(protractor({
+//            configFile: "protractor.conf.js",
+//            args: ['--baseUrl', 'http://127.0.0.1:8000']
+//        }))
+//        .on('error', function(e) { throw e })
+//
+//});
 
-// By gulp-karma karma.conf.js files array is replaced with:
-var testFiles = [
-    'bower_components/angular/angular.js',
-    'bower_components/angular-mocks/angular-mocks.js',
-    'public/js/*.js',
-    'tests/unit/*.js'
-];
-
-gulp.task('test', function() {
-    // Be sure to return the stream
-    return gulp.src(testFiles)
-        .pipe(karma({
-            configFile: 'karma.conf.js',
-            action: 'run'
-        }))
-        .on('error', function(err) {
-            // Make sure failed tests cause gulp to exit non-zero
-          //  throw err;
-        });
-});
-
-gulp.task('e2e', function(){
-    return gulp.src(["tests/*.js"])
-        .pipe(protractor({
-            configFile: "protractor.conf.js",
-            args: ['--baseUrl', 'http://127.0.0.1:8000']
-        }))
-        .on('error', function(e) { throw e })
-
-});
-
-gulp.task('less', function () {
+gulp.task('compileLess', function () {
     return gulp.src('./client/less/*.less')
         .pipe(less({
             paths: [path.join(__dirname, 'less', 'includes')]
         }))
-        .pipe(gulp.dest('./public/css'))
+        .pipe(gulp.dest('./client/css'))
         .pipe(livereload());
+});
+
+gulp.task('copyTemplate', function() {
+    gulp.src('client/index.html').pipe(gulp.dest('public'));
+});
+
+gulp.task('copyCSS', function() {
+    gulp.src('client/css/*').pipe(gulp.dest('public/css'));
+});
+
+gulp.task("copyJS", function () {
+    return gulp.src(["client/js/**/*.js"])
+        .pipe(gulp.dest("public/js"));
 });
 
 gulp.task('minify', function() {
     gulp.src('client/index.html')
         .pipe(usemin({
-            assetsDir: 'public',
+            assetsDir: 'client',
             css: [minifyCss(), 'concat'],
-            js: [uglify(), 'concat']
+            js:[]
         }))
         .pipe(gulp.dest('public'));
 });
 
-gulp.task('pure', function() {
-    gulp.src('client/index.html')
-        .pipe(gulp.dest('public'));
-});
-gulp.task('fonts', function() {
-    gulp.src([
-        'bower_components/foundation-icon-fonts/foundation-icons.woff',
-        'bower_components/foundation-icon-fonts/foundation-icons.ttf'
-    ]).pipe(gulp.dest('public/css'));
+gulp.task("requirejsBuild", function () {
+    return gulp.src(["client/js/**/*.js", 'bower_components/**/*.js'])
+        .pipe(amdOptimize("main", {configFile: 'client/config/amd_config.js'}))
+        .pipe(concat("app.minified.js"))
+        .pipe(uglify())
+        .pipe(gulp.dest("public/js"));
 });
 
+gulp.task('clean', function (cb) {
+    del([
+        'public/js/**',
+        'public/css/**'
+    ],cb);
+});
 
+gulp.task('dev', function() {
+    runSequence('clean', ['compileLess', 'copyTemplate', 'copyCSS', 'copyJS'])
+});
 
+gulp.task('prod', function() {
+    runSequence('clean', ['compileLess', 'minify', 'requirejsBuild'])
+});
 
-gulp.task('dev', ['less', 'pure','test','e2e']);
-gulp.task('prod', ['less', 'minify','fonts']);

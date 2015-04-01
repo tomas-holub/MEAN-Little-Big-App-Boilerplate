@@ -3,44 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <!-- build:css /css/app.minified.css -->
-    <link rel="stylesheet" type="text/css" href="../bower_components/foundation/css/foundation.css">
-    <link rel="stylesheet" href="../bower_components/foundation-icon-fonts/foundation-icons.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <!-- endbuild -->
+    <link rel="stylesheet" href="/css/app.minified.css"/>
 
 </head>
 <body>
-<div class="parallax-background">
-    <div class="intro-text">
-        Welcome!
-        <p><i class="fi-arrow-down"></i></p>
-    </div>
 
-</div>
-
-<div  class="parallax-content" ng-controller="ApiController">
-    <button ng-click="createUser()">Create User</button>
-    <textarea name="" id="" cols="30" rows="2" ng-model="title"></textarea>
-    <textarea name="" id="" cols="30" rows="6" ng-model="text"></textarea>
-    <button ng-click="createArticle()">Create Article</button>
-    <div ng-repeat="article in articles">
-        <div>{{article.title}}</div>
-        <div>{{article.text}}</div>
-        <button ng-click="deleteArticle(article._id)">Delete Article</button>
-        <div ng-repeat="comment in comments">
-            <div>{{comment.text}}</div>
-        </div>
-        <textarea name="" id="" cols="30" rows="6" ng-model="new_comment"></textarea>
-        <button ng-click="addComment('54fcb5fa17e0b5931390ed7f',article._id, new_comment)">Create Comment</button>
-    </div>
-</div>
-
-<!-- build:js /js/app.minified.js -->
-<script src="../bower_components/angular/angular.js"></script>
-<script src="js/client.js"></script>
-<!-- endbuild -->
+<script src="/js/app.minified.js"></script>
 
 </body>
 </html>
