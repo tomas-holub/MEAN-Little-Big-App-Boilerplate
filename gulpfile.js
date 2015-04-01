@@ -86,7 +86,7 @@ gulp.task('test', function() {
 gulp.task('e2e', function(){
     return gulp.src(["tests/*.js"])
         .pipe(protractor({
-            configFile: "conf.js",
+            configFile: "protractor.conf.js",
             args: ['--baseUrl', 'http://127.0.0.1:8000']
         }))
         .on('error', function(e) { throw e })
