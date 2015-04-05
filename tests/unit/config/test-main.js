@@ -5,7 +5,6 @@ var pathToModule = function(path) {
 };
 Object.keys(window.__karma__.files).forEach(function(file) {
     if (TEST_REGEXP.test(file)) {
-        console.log(file);
         allTestFiles.push(pathToModule(file));
     }
 });
@@ -17,8 +16,7 @@ requirejs.config({
         'angular-route': 'bower_components/angular-route/angular-route',
         'angular-resource': 'bower_components/angular-resource/angular-resource',
         'angular-mocks': 'bower_components/angular-mocks/angular-mocks',
-        'js': './public/js'
-        //'js': './client/js'
+        'js': 'client/js'
     },
     shim: {
         angular: {
@@ -34,7 +32,7 @@ requirejs.config({
             deps: ['angular']
         }
     },
-    deps: allTestFiles,  // add tests array to load our tests
+    deps: allTestFiles , // add tests array to load our tests
 
     callback: window.__karma__.start  // start tests once Require.js is done
 });

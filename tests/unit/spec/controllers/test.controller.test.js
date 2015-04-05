@@ -1,4 +1,7 @@
-define(['angular-mocks', 'js/controllers/_loader'], function () {
+define([
+    'angular-mocks',
+    'js/controllers/_loader'
+], function () {
 
     describe('', function () {
         beforeEach(module('app.controllers'));

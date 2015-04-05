@@ -8,14 +8,12 @@ module.exports = function (config) {
             {pattern: 'bower_components/angular-route/angular-route.js', included: false},
             {pattern: 'bower_components/angular-resource/angular-resource.js', included: false},
             {pattern: 'bower_components/angular-mocks/angular-mocks.js', included: false},
-            {pattern: 'public/js/**/*.js', included: false},
-           // {pattern: 'client/js/**/*.js', included: false},
+            {pattern: 'client/js/**/*.js', included: false},
             {pattern: 'tests/unit/spec/**/*.js', included: false},
             'tests/unit/config/test-main.js'
         ],
         exclude: [
-            'public/js/main.js'
-            //'client/js/main.js'
+            'client/js/main.js'
         ],
 
         port: 9876,

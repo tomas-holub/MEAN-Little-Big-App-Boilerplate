@@ -1,4 +1,7 @@
-define(['angular-mocks', 'js/services/_loader'], function () {
+define([
+    'angular-mocks',
+    'js/services/_loader'
+], function () {
     describe('Article service', function () {
 
         beforeEach(function () {
