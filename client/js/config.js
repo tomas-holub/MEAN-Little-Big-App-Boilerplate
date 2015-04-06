@@ -28,7 +28,7 @@ define([
     app.config(['$routeProvider', 'RESOLVE', function($routeProvider, RESOLVE){
         $routeProvider.when('/',  {
             controller: "MainCtrl as main",
-            template: "{{main.test}}",
+            template: "<div button>aaaaaa</div>{{main.test}}",
             resolve: RESOLVE.main
 
         }).otherwise({template: "aaaaa"});

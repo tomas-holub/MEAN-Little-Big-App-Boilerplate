@@ -3,7 +3,7 @@ define([
     'js/controllers/_loader',
     'js/services/_loader'
 ], function () {
-    describe('', function () {
+    describe('MainCtrl test', function () {
 
         var MainCtrl;
         beforeEach(function(){
