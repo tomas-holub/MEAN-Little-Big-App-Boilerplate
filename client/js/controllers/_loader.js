@@ -3,5 +3,6 @@
  */
 define([
     './main.controller',
-    './test.controller'
+    './test.controller',
+    './sample.controller'
 ], function() {});

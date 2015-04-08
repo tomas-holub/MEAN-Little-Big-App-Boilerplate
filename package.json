@@ -35,6 +35,7 @@
     "gulp-less": "^3.0.1",
     "gulp-livereload": "^3.8.0",
     "gulp-minify-css": "^0.5.1",
+    "gulp-ngdocs": "^0.2.10",
     "gulp-notify": "^2.2.0",
     "gulp-protractor": "0.0.12",
     "gulp-sequence": "^0.3.2",

@@ -1,3 +1,4 @@
 define([
-    './button.directive'
+    './button.directive',
+    './sample.directives'
 ],function(){});

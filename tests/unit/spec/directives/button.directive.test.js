@@ -5,8 +5,9 @@ define(['angular-mocks', 'js/directives/_loader'], function(){
         beforeEach(function(){
             module('app.directives');
             inject(function($rootScope, $compile){
-                elm = angular.element('<div button>ooo</div>');
-                scope = new $rootScope;
+                elm = '<div button="{{text}}"></div>';
+                scope = $rootScope.$new();
+                scope.text = 'click me';
                 $compile(elm)(scope);
                 scope.$digest();
             });
@@ -17,6 +18,5 @@ define(['angular-mocks', 'js/directives/_loader'], function(){
             })
         });
     });
-
 
 });
