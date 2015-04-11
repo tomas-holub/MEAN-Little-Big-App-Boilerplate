@@ -1,0 +1,21 @@
+<div class="small-11 medium-8 large-6 small-centered columns">
+    <form name="loginForm" class="pure-form pure-form-stacked">
+        <fieldset>
+            <legend>Sign in to your account</legend>
+            <label>
+                Type your email.
+                <input type="text" placeholder="Email" name="email" ng-model="login.email">
+            </label>
+
+            <label>
+                Type your password.
+                <input password password1 type="password" placeholder="Password" name="password" ng-model="login.password">
+            </label>
+            <button id="register" type="submit" name="submit" ng-click="login.login()" class="pure-button pure-button-primary right">
+                Sign in
+            </button>
+
+        </fieldset>
+    </form>
+</div>
+

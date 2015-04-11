@@ -1,15 +1,6 @@
 var User = require('../models/user.model');
 var express = require('express');
 var router = express.Router();
-//
-//router.param('user_id', function(req, res, next, id) {
-//    // sample user, would actually fetch from DB, etc...
-//    req.user = {
-//        id: id,
-//        name: 'TJ'
-//    };
-//    next();
-//});
 
 router.route('/user').get(function (req, res) {
     User.find(function (err, users) {

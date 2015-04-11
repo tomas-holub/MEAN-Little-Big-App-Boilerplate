@@ -8,47 +8,100 @@
     <link rel="stylesheet" href="../bower_components/foundation-icon-fonts/foundation-icons.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/navigation.css"/>
     <!-- endbuild -->
 
 </head>
-<body id="home">
-<div watch></div>
-<div template data-name="jmeno" data-prijmeni="prijmeni"></div>
+<body id="home" style="padding-top: 45px;">
+<div class="topbar-fixed-wrapper">
+    <top-bar>
+        <ul class="title-area">
+            <li class="name">
+                <h1><a ui-sref="welcome">My Site</a></h1>
+            </li>
+            <li toggle-top-bar class="menu-icon"><a href="#"><span></span></a></li>
+        </ul>
 
-<div superhero speed strength>vsehochut</div>
-<div superhero speed>rychlik</div>
-
-<div my-first-directive="" message="Mom!"></div>
-<div enter="panel" leave> check me out </div>
-
-
-<div ng-controller="SampleCtrl as sample">
-    <input type="text" ng-model="name"/>
-    {{updated}}
-    <div testik></div>
-
-
-    drink ng-model controller:
-    <input type="text" ng-model="flavour"/>
-    drink directiva:
-    <div drink="flavour"></div>
-    <div drink="lemon"></div>
-    <div drink="strawbery"></div>
-
-    <div task done="logTask(mask)"></div>
-
-    <div data-kid data-done="logChore(tom)"></div>
-    Controller:
-    <input type="text" ng-model="$parent.message"/>
-    Directive1:
-    <div data-messenger></div>
-    Directive2:
-    <div data-messenger></div>
+        <top-bar-section>
+            <ul class="right">
+                <li><a ui-sref="sign_up">Register</a></li>
+                <li><a ui-sref="sign_in">Login</a></li>
+            </ul>
+        </top-bar-section>
+    </top-bar>
 </div>
+<div ui-view></div>
 
-<ng-view></ng-view>
+
+<!--<div class="parallax-background">-->
+<!--<div class="sticky">-->
+<!--<nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">-->
+<!--<ul class="title-area">-->
+<!--<li class="name">-->
+<!--<h1><a href="#">My Site</a></h1>-->
+<!--</li>-->
+<!--&lt;!&ndash; Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone &ndash;&gt;-->
+<!--<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>-->
+<!--</ul>-->
+
+<!--<section class="top-bar-section">-->
+<!--&lt;!&ndash; Left Nav Section &ndash;&gt;-->
+<!--<ul class="left">-->
+<!--<li><a ui-sref="home">Home</a></li>-->
+<!--<li><a ui-sref="about">About</a></li>-->
+<!--</ul>-->
+
+<!--<ul class="left">-->
+<!--<li><a ui-sref="sign_up">Register</a></li>-->
+<!--<li><a ui-sref="login">Login</a></li>-->
+<!--</ul>-->
+<!--</section>-->
+<!--</nav>-->
+<!--</div>-->
+<!--<div class="intro-text">-->
+<!--scroll for parallax!-->
+<!--<p><i class="fi-arrow-down"></i></p>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class="parallax-content">-->
+<!--<div ui-view></div>-->
+<!--</div>-->
 
 
+<!--<div watch></div>-->
+<!--<div template data-name="jmeno" data-prijmeni="prijmeni"></div>-->
+
+<!--<div superhero speed strength>vsehochut</div>-->
+<!--<div superhero speed>rychlik</div>-->
+
+<!--<div my-first-directive="" message="Mom!"></div>-->
+<!--<div enter="panel" leave> check me out </div>-->
+
+
+<!--<div ng-controller="SampleCtrl as sample">-->
+<!--<input type="text" ng-model="name"/>-->
+<!--{{updated}}-->
+<!--<div testik></div>-->
+
+
+<!--drink ng-model controller:-->
+<!--<input type="text" ng-model="flavour"/>-->
+<!--drink directiva:-->
+<!--<div drink="flavour"></div>-->
+<!--<div drink="lemon"></div>-->
+<!--<div drink="strawbery"></div>-->
+
+<!--<div task done="logTask(mask)"></div>-->
+
+<!--<div data-kid data-done="logChore(tom)"></div>-->
+<!--Controller:-->
+<!--<input type="text" ng-model="$parent.message"/>-->
+<!--Directive1:-->
+<!--<div data-messenger></div>-->
+<!--Directive2:-->
+<!--<div data-messenger></div>-->
+<!--</div>-->
 
 
 <!-- build:js /js/app.minified.js -->

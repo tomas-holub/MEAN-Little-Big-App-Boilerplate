@@ -15,6 +15,7 @@ requirejs.config({
         'domReady': 'bower_components/domReady/domReady',
         'angular-route': 'bower_components/angular-route/angular-route',
         'angular-resource': 'bower_components/angular-resource/angular-resource',
+        'angular-ui-router': 'bower_components/angular-ui-router/release/angular-ui-router',
         'angular-mocks': 'bower_components/angular-mocks/angular-mocks',
         'js': 'client/js'
     },
@@ -27,6 +28,9 @@ requirejs.config({
         },
         'angular-route' : {
             deps: ['angular']
+        },
+        'angular-ui-router':{
+            deps:['angular']
         },
         'angular-mocks' : {
             deps: ['angular']

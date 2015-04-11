@@ -18,11 +18,12 @@
     "angular-resource": "1.3.x",
     "angular-foundation": "0.5.1",
     "angular-upload": "latest",
-    "ngstorage": "0.3.0",
+    "ngstorage": "~0.3.0",
     "foundation": "latest",
     "foundation-icon-fonts": "latest",
     "requirejs": "~2.1.17",
-    "domReady": "~2.0.1"
+    "domReady": "~2.0.1",
+    "angular-ui-router": "latest"
   },
   "devDependencies": {
     "angular-mocks": "1.3.x"

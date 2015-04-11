@@ -13,11 +13,18 @@ var concat = require('gulp-concat');
 var del = require('del');
 var runSequence = require('run-sequence');
 var gulpDocs = require('gulp-ngdocs');
+var templateCache = require('gulp-angular-templatecache');
 
 gulp.task('ngdocs', [], function () {
     return gulp.src('client/js/**/*.js')
         .pipe(gulpDocs.process())
         .pipe(gulp.dest('./docs'));
+});
+
+gulp.task('templateCache', function () {
+    gulp.src('client/views/**/*.html')
+        .pipe(templateCache({standalone:true}))
+        .pipe(gulp.dest('client/js'));
 });
 
 gulp.task('unitTests', function () {
@@ -55,6 +62,11 @@ gulp.task('copyTemplate', function () {
     gulp.src('client/index.html').pipe(gulp.dest('public'));
 });
 
+//used only partitaly
+gulp.task('copyViews', function () {
+    gulp.src('client/views/*.html').pipe(gulp.dest('public/views'));
+});
+
 gulp.task('copyCSS', function () {
     gulp.src('client/css/*').pipe(gulp.dest('public/css'));
 });
@@ -89,11 +101,15 @@ gulp.task('clean', function (cb) {
     ], cb);
 });
 
+gulp.task('devf', function () {
+    runSequence('clean', 'templateCache', ['unitTests', 'e2eTests', 'compileLess', 'copyTemplate', 'copyCSS', 'copyJS'])
+});
+
 gulp.task('dev', function () {
-    runSequence('clean', ['unitTests', 'e2eTests', 'compileLess', 'copyTemplate', 'copyCSS', 'copyJS'])
+    runSequence('clean', 'templateCache', ['unitTests', 'compileLess', 'copyTemplate', 'copyCSS', 'copyJS', 'copyViews'])
 });
 
 gulp.task('prod', function () {
-    runSequence('clean', ['compileLess', 'minify', 'requirejsBuild'])
+    runSequence('clean', 'templateCache', ['compileLess', 'minify', 'requirejsBuild'])
 });
 
