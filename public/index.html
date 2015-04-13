@@ -3,7 +3,13 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="/css/app.minified.css"/>
+    <!-- build:css /css/app.minified.css -->
+    <link rel="stylesheet" href="../bower_components/foundation/css/foundation.css">
+    <link rel="stylesheet" href="../bower_components/foundation-icon-fonts/foundation-icons.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/navigation.css"/>
+    <!-- endbuild -->
 
 </head>
 <body id="home" style="padding-top: 45px;">
@@ -108,7 +114,9 @@
 <!--</div>-->
 
 
-<script src="/js/app.minified.js"></script>
+<!-- build:js /js/app.minified.js -->
+<script data-main="js/main" src="../bower_components/requirejs/require.js"></script>
+<!-- endbuild -->
 
 </body>
 </html>

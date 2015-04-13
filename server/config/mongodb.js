@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var env      = process.env.NODE_ENV || 'development';
 var config   = require('./config')[env];
 var connectionString;
-
+console.log(process.env);
 if (typeof config !== 'undefined') {
 
     var dbName   = config.dbName || 'test';
