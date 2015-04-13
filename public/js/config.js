@@ -6,7 +6,7 @@ define([
         name: 'Boilerplate'
     });
     app.constant("CONFIG", {
-        apiBase: 'http://localhost:3000/api/v1/'
+        apiBase: '/api/v1/'
     });
 
 
