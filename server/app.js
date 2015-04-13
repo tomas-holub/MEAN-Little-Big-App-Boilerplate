@@ -20,8 +20,8 @@ var auth   = require('./middlewares/authenticate.js');
 var router = require('./routes/router');
 app.use('/api/v1', router);
 
-var port = parseInt(process.env.OPENSHIFT_NODEJS_PORT) || config.port || '3000';
-var ip   = process.env.OPENSHIFT_NODEJS_IP || config.ip || '127.0.0.1';
+var port = parseInt(config.serverPort) || '3000';
+var ip   = config.serverIp || '127.0.0.1';
 
 app.listen(port, ip, function () {
     console.log( "Listening on " + ip + ", server_port " + port )

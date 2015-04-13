@@ -2,26 +2,21 @@ var mongoose = require('mongoose');
 var env      = process.env.NODE_ENV || 'development';
 var config   = require('./config')[env];
 var connectionString;
-console.log(process.env);
+
 if (typeof config !== 'undefined') {
 
-    var dbName   = config.dbName || 'test';
-    var dbHost   = config.dbHost || 'localhost';
-    var dbPort   = config.dbPort || '27017';
+    connectionString = config.dbHost + ':' + config.dbPort + '/' + config.dbName;
 
-    connectionString = dbHost + ':' + dbPort + '/' + dbName;
+    if (config.dbPassword){
+        connectionString = config.dbUsername + ":" +
+        config.dbPassword + "@" +
+        config.dbHost + ':' +
+        config.dbPort + '/' +
+        config.dbName;
+    }
+
+    mongoose.connect('mongodb://' + connectionString);
 }
-
-//if OPENSHIFT env variables are present, use the available connection info:
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-    connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-    process.env.OPENSHIFT_APP_NAME;
-}
-
-mongoose.connect('mongodb://' + connectionString);
 
 mongoose.connection.on('connected', function () {
     console.log('Mongoose connected to ' + connectionString);
