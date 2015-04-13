@@ -22,7 +22,7 @@ gulp.task('ngdocs', [], function () {
 });
 
 gulp.task('templateCache', function () {
-    gulp.src('client/views/**/*.html')
+   return gulp.src('client/views/**/*.html')
         .pipe(templateCache({standalone:true}))
         .pipe(gulp.dest('client/js'));
 });
@@ -106,10 +106,18 @@ gulp.task('devf', function () {
 });
 
 gulp.task('dev', function () {
-    runSequence('clean', 'templateCache', ['unitTests', 'compileLess', 'copyTemplate', 'copyCSS', 'copyJS', 'copyViews'])
+    runSequence('clean', 'templateCache', ['unitTests', 'compileLess', 'copyTemplate', 'copyCSS', 'copyJS'])
 });
 
 gulp.task('prod', function () {
     runSequence('clean', 'templateCache', ['compileLess', 'minify', 'requirejsBuild'])
 });
 
+
+
+var mocha = require('gulp-mocha');
+
+gulp.task('mocha', function () {
+    return gulp.src('tests/server/test.js', {read: false})
+        .pipe(mocha({reporter: 'nyan'}));
+});

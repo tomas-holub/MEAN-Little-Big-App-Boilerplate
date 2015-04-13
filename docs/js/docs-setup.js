@@ -5,12 +5,39 @@ NG_DOCS={
   "pages": [
     {
       "section": "api",
+      "id": "app.controllers.controller:LogInController",
+      "shortName": "LogInController",
+      "type": "controller",
+      "moduleName": "app.controllers",
+      "shortDescription": "Handles scope of the login form view",
+      "keywords": "api app changes controller controllers data form handles login method ng-models profile scope successful user view"
+    },
+    {
+      "section": "api",
       "id": "app.controllers.controller:MainCtrl",
       "shortName": "MainCtrl",
       "type": "controller",
       "moduleName": "app.controllers",
       "shortDescription": "This is the main controller",
       "keywords": "api app console controller controllers doesn exist hello js logs main method param parameter sayhello"
+    },
+    {
+      "section": "api",
+      "id": "app.controllers.controller:ProfileController",
+      "shortName": "ProfileController",
+      "type": "controller",
+      "moduleName": "app.controllers",
+      "shortDescription": "This is the main controller",
+      "keywords": "api app controller controllers main"
+    },
+    {
+      "section": "api",
+      "id": "app.controllers.controller:RegisterController",
+      "shortName": "RegisterController",
+      "type": "controller",
+      "moduleName": "app.controllers",
+      "shortDescription": "Handles scope of the register form view",
+      "keywords": "api app controller controllers data form handles method ng-models register registration scope user view"
     }
   ],
   "apis": {

@@ -1,0 +1,18 @@
+<div class="parallax-background">
+    <div class="intro-text">
+        scroll for parallax!
+        {{profile.prd}}
+        <div ng-repeat="user in users">
+            {{user.email}}
+        </div>
+        <p><i class="fi-arrow-down"></i></p>
+    </div>
+</div>
+
+<div class="parallax-content">
+    <h3>Welcome on your profile</h3>
+    <div ng-repeat="user in profile.users">
+        {{user.email}}
+    </div>
+
+</div>

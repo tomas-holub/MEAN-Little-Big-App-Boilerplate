@@ -19,11 +19,23 @@ exports.get = function (req, res) {
     });
 };
 
-exports.getById = function(req, res){
-
+exports.getById = function (req, res) {
+    if (req.params.id) {
+        User.findOne({_id: req.params.id}, function (err, res) {
+            if (user) {
+                var userData = new User({
+                    email: user.email
+                });
+            } else {
+                return res.status(404).send({message: "User with id " + req.params.id + " not found"});
+            }
+        });
+    } else {
+        return res.status(404).send({message: "Missing user id"});
+    }
 };
 
-exports.update = function(req, res){
+exports.update = function (req, res) {
 
 };
 

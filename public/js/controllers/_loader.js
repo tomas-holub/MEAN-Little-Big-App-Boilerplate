@@ -6,5 +6,6 @@ define([
     './test.controller',
     './sample.controller',
     './login.controller',
-    './register.controller'
+    './register.controller',
+    './profile.controller'
 ], function() {});

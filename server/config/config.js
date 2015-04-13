@@ -1,5 +1,22 @@
 var config = {
+    development: {
+        dbName: 'tom',
+        dbHost: 'mongodb://localhost',
+        dbPort: 27017,
+        port: 3000,
+        ip:'127.0.0.1'
+    },
+    test: {
+        dbName: 'test',
+        dbHost: 'mongodb://localhost',
+        dbPort: 27017,
+        port: 8888,
+        ip:'127.0.0.1'
+    },
+    // secret keyword
     secret: "ajajaj",
-    expiration: 30
+    // expiration in ms:
+    expiration: 30000000  //30s
+    //expiration: 30000  //30s
 };
 module.exports = config;

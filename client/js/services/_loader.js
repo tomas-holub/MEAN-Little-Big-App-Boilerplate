@@ -7,5 +7,6 @@ define([
     './request-rejector.interceptor',
     './tom.service',
     './article.service',
-    './auth.service'
+    './auth.service',
+    './user.service'
 ], function(){});

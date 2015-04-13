@@ -1,6 +1,7 @@
-var jwt       = require('jwt-simple');
-var validUser = require('../controllers/auth.controller').validUser;
-var config    = require('../config/config');
+var jwt    = require('jwt-simple');
+var config = require('../config/config');
+var User   = require('../models/user.model');
+var Token  = require('../models/token.model');
 
 var auth = function (req, res, next) {
 
@@ -18,13 +19,29 @@ var auth = function (req, res, next) {
                 });
                 return;
             }
-
-            validUser(decoded.email, function (isValid) {
-                if (isValid) {
-                    res.status(200);
-                    next();
+            Token.findOne({token: token}, function (err, token) {
+                if (token !== null) {
+                    res.status(400);
+                    res.json({
+                        "status": 400,
+                        "message": "Token invalid"
+                    });
+                    return;
                 }
-            });
+                User.findOne({email: decoded.email}, function (err, user) {
+                    if (user.email) {
+                        res.status(200);
+                        next();
+                    } else {
+                        res.status(401);
+                        res.json({
+                            "status": 401,
+                            "message": "Invalid User"
+                        });
+                        return;
+                    }
+                })
+            })
         } catch (err) {
             res.status(500);
             res.json({
@@ -37,7 +54,7 @@ var auth = function (req, res, next) {
         res.status(401);
         res.json({
             "status": 401,
-            "message": "Unauthorized"
+            "message": "Missing Token"
         });
         return;
     }

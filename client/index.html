@@ -13,24 +13,34 @@
 
 </head>
 <body id="home" style="padding-top: 45px;">
-<div class="topbar-fixed-wrapper">
-    <top-bar>
-        <ul class="title-area">
-            <li class="name">
-                <h1><a ui-sref="welcome">My Site</a></h1>
-            </li>
-            <li toggle-top-bar class="menu-icon"><a href="#"><span></span></a></li>
-        </ul>
 
-        <top-bar-section>
-            <ul class="right">
-                <li><a ui-sref="sign_up">Register</a></li>
-                <li><a ui-sref="sign_in">Login</a></li>
-            </ul>
-        </top-bar-section>
-    </top-bar>
-</div>
-<div ui-view></div>
+
+<div ui-view="header"></div>
+<div ui-view="content"></div>
+<div ui-view="footer"></div>
+
+
+
+
+
+<!--<div class="topbar-fixed-wrapper">-->
+    <!--<top-bar>-->
+        <!--<ul class="title-area">-->
+            <!--<li class="name">-->
+                <!--<h1><a ui-sref="welcome">My Site</a></h1>-->
+            <!--</li>-->
+            <!--<li toggle-top-bar class="menu-icon"><a href="#"><span></span></a></li>-->
+        <!--</ul>-->
+
+        <!--<top-bar-section>-->
+            <!--<ul class="right">-->
+                <!--<li><a ui-sref="sign_up">Register</a></li>-->
+                <!--<li><a ui-sref="sign_in">Login</a></li>-->
+            <!--</ul>-->
+        <!--</top-bar-section>-->
+    <!--</top-bar>-->
+<!--</div>-->
+<!--<div ui-view></div>-->
 
 
 <!--<div class="parallax-background">-->

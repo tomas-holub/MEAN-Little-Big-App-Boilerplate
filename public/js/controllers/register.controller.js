@@ -1,16 +1,26 @@
+/**
+ * @ngdoc controller
+ * @name app.controllers.controller:RegisterController
+ * @description
+ * Handles scope of the register form view
+ */
 define(['./_module'], function (controllers) {
-    var RegisterController = function ($scope, AuthService){
+    var RegisterController = function ($scope, AuthService) {
 
-        this.test = "aaaa";
-
-        this.register = function() {
+        /**
+         * @ngdoc method
+         * @name register
+         * @methodOf app.controllers.controller:RegisterController
+         * @description
+         * Uses the data from ng-models of registration form to register new user
+         */
+        this.register = function () {
 
             var formData = {
                 email: this.email,
                 password: this.password,
                 password_repeat: this.password_repeat
             };
-            console.log(formData);
             AuthService.register(formData);
         }
     };
