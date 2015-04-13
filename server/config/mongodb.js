@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 var env      = process.env.NODE_ENV || 'development';
+var config   = require('./config')[env];
 var connectionString;
 
-if (typeof env !== 'undefined') {
-    var config   = require('./config')[env];
+if (typeof config !== 'undefined') {
+
     var dbName   = config.dbName || 'test';
     var dbHost   = config.dbHost || 'localhost';
     var dbPort   = config.dbPort || '27017';
