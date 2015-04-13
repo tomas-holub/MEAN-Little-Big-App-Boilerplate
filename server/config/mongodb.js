@@ -1,22 +1,24 @@
-var env      = process.env.NODE_ENV || 'development';
-var config   = require('./config')[env];
 var mongoose = require('mongoose');
-var dbName   = config.dbName || 'test';
-var dbHost   = config.dbHost || 'localhost';
-var dbPort   = config.dbPort || '27017';
+var env      = process.env.NODE_ENV || 'development';
+var connectionString;
 
-var connectionString = dbHost + ':' + dbPort + '/' + dbName;
+if (typeof env !== 'undefined') {
+    var config   = require('./config')[env];
+    var dbName   = config.dbName || 'test';
+    var dbHost   = config.dbHost || 'localhost';
+    var dbPort   = config.dbPort || '27017';
 
-// if OPENSHIFT env variables are present, use the available connection info:
-//if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
-//    connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-//    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-//    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-//    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-//    process.env.OPENSHIFT_APP_NAME;
-//}
+    connectionString = dbHost + ':' + dbPort + '/' + dbName;
+}
 
-connectionString = 'admin:Gqxv7VTZ7vfh@' + process.env.OPENSHIFT_MONGODB_DB_HOST + ':' + process.env.OPENSHIFT_MONGODB_DB_PORT + '/' + process.env.OPENSHIFT_APP_NAME;
+//if OPENSHIFT env variables are present, use the available connection info:
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+    connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+    process.env.OPENSHIFT_APP_NAME;
+}
 
 mongoose.connect('mongodb://' + connectionString);
 
