@@ -1,14 +1,14 @@
 var config = {
     development: {
         dbName: 'tom',
-        dbHost: 'mongodb://localhost',
+        dbHost: 'localhost',
         dbPort: 27017,
         port: 3000,
         ip:'127.0.0.1'
     },
     test: {
         dbName: 'test',
-        dbHost: 'mongodb://localhost',
+        dbHost: 'localhost',
         dbPort: 27017,
         port: 8888,
         ip:'127.0.0.1'
