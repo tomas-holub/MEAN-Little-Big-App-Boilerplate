@@ -7,7 +7,7 @@ exports.register = function (req, res) {
     var user = new User(req.body);
     user.save(function (err) {
         if (err) {
-            return res.status(404).send(err);
+            return resolveError(err, res);
         }
         res.status(201).send({message: 'User Created'});
     });
@@ -66,3 +66,10 @@ exports.logout = function (req, res) {
         res.status(401).send({message: "Token not found"});
     }
 };
+
+function resolveError(err, res){
+    if (err.name==='ValidationError') {
+        return res.status(422).send(err);
+    }
+    return res.status(404).send(err);
+}

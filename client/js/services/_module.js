@@ -1,3 +1,14 @@
+/**
+ * Module app.services
+ */
 define(['angular'], function(angular){
-    return angular.module('app.services',[]);
+
+    var services = angular.module('app.services',['ngStorage']);
+
+    services.constant("CONFIG", {
+        apiBase: '/api/v1/'
+    });
+
+
+    return services;
 });

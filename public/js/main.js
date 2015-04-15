@@ -7,6 +7,7 @@ require.config({
         'angular-resource': '../../bower_components/angular-resource/angular-resource',
         'angular-ui-router': '../../bower_components/angular-ui-router/release/angular-ui-router',
         'ngStorage':'../../bower_components/ngstorage/ngStorage',
+        'angular-messages':'../../bower_components/angular-messages/angular-messages',
         'mm-foundation': '../../bower_components/angular-foundation/mm-foundation-tpls',
         'templates': 'templates'
     },
@@ -24,6 +25,9 @@ require.config({
             deps:['angular']
         },
         'ngStorage':{
+            deps:['angular']
+        },
+        'angular-messages':{
             deps:['angular']
         },
         'mm-foundation':{

@@ -35,10 +35,6 @@ exports.getById = function (req, res) {
     }
 };
 
-exports.update = function (req, res) {
-
-};
-
 exports.delete = function (req, res) {
     if (req.params.id) {
         User.findByIdAndRemove(

@@ -1,17 +1,23 @@
 <div class="small-11 medium-8 large-6 small-centered columns">
-    <form name="loginForm" class="pure-form pure-form-stacked">
+    <form id="loginForm" name="loginForm" class="pure-form pure-form-stacked" novalidate ng-submit="login.submit(loginForm.$valid)">
         <fieldset>
             <legend>Sign in to your account</legend>
+            <small class="error" ng-show="login.invalid">{{login.message}}</small>
             <label>
                 Type your email.
-                <input type="text" placeholder="Email" name="email" ng-model="login.email">
+                <input required type="email" name="email" placeholder="Email" ng-model="login.email">
             </label>
-
+            <div ng-messages="loginForm.email.$error">
+                <small class="error" ng-message="email" >Please enter a valid email address</small>
+            </div>
             <label>
                 Type your password.
-                <input password password1 type="password" placeholder="Password" name="password" ng-model="login.password">
+                <input minlength="5" name="password" type="password" placeholder="Password" ng-model="login.password">
             </label>
-            <button id="register" type="submit" name="submit" ng-click="login.login()" class="pure-button pure-button-primary right">
+            <div ng-messages="loginForm.password.$error">
+                <small class="error" ng-message="minlength" >The password is definitely longer</small>
+            </div>
+            <button id="register" type="submit" class="pure-button pure-button-primary right">
                 Sign in
             </button>
 

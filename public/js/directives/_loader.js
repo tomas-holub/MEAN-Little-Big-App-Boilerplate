@@ -1,4 +1,5 @@
 define([
     './button.directive',
-    './sample.directives'
+    './sample.directives',
+    './password.directive'
 ],function(){});

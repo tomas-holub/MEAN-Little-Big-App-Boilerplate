@@ -14,6 +14,8 @@ var del = require('del');
 var runSequence = require('run-sequence');
 var gulpDocs = require('gulp-ngdocs');
 var templateCache = require('gulp-angular-templatecache');
+var server = require( 'gulp-develop-server' );
+var mocha = require('gulp-mocha');
 
 gulp.task('ngdocs', [], function () {
     return gulp.src('client/js/**/*.js')
@@ -47,6 +49,11 @@ gulp.task('e2eTests', function () {
             throw e
         })
 
+});
+
+gulp.task('serverTests', function () {
+    return gulp.src('tests/server/spec/*.js', {read: false})
+        .pipe(mocha({reporter: 'nyan'}));
 });
 
 gulp.task('compileLess', function () {
@@ -102,11 +109,11 @@ gulp.task('clean', function (cb) {
 });
 
 gulp.task('devf', function () {
-    runSequence('clean', 'templateCache', ['unitTests', 'e2eTests', 'compileLess', 'copyTemplate', 'copyCSS', 'copyJS'])
+    runSequence('clean', 'templateCache', ['unitTests', 'e2eTests', 'compileLess', 'copyTemplate', 'copyJS'], 'copyCSS')
 });
 
 gulp.task('dev', function () {
-    runSequence('clean', 'templateCache', ['unitTests', 'compileLess', 'copyTemplate', 'copyCSS', 'copyJS'])
+    runSequence('clean', 'templateCache', ['unitTests', 'compileLess', 'copyTemplate', 'copyJS', 'copyCSS'])
 });
 
 gulp.task('prod', function () {
@@ -115,9 +122,4 @@ gulp.task('prod', function () {
 
 
 
-var mocha = require('gulp-mocha');
 
-gulp.task('mocha', function () {
-    return gulp.src('tests/server/test.js', {read: false})
-        .pipe(mocha({reporter: 'nyan'}));
-});

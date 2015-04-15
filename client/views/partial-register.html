@@ -1,28 +1,35 @@
 <div class="small-11 medium-8 large-6 small-centered columns">
     <h1>Join Boilerplate</h1>
     <p>The best place to do anything you want</p>
-
-    <form name="registrationForm" class="pure-form pure-form-stacked">
+    <form id="registrationForm" name="registrationForm" class="pure-form pure-form-stacked" novalidate ng-submit="register.submit(registrationForm.$valid)">
         <fieldset>
             <legend>Create your personal account</legend>
+            <small class="error" ng-show="register.invalid">{{register.message}}</small>
             <label>
                 This will be your also your  username — please enter valid email only.
-                <input type="text" placeholder="Email" name="email" ng-model="register.email">
+                <input required type="email" name="email" placeholder="Email" ng-model="register.email">
             </label>
-
+            <div ng-messages="registrationForm.email.$error">
+                <small class="error" ng-message="email" >Please enter a valid email address</small>
+            </div>
             <label>
                 Use at least one lowercase letter, one numeral, and seven characters.
-                <input password password1 type="password" placeholder="Password" name="password" ng-model="register.password">
+                <input required minlength="5" type="password" name="password" placeholder="Password" ng-model="register.password">
             </label>
+            <div ng-messages="registrationForm.password.$error">
+                <small class="error" ng-message="minlength" >The password is too short</small>
+            </div>
             <label>
-                <input password password2 type="password" placeholder="Password repeat" name="password_repeat"
-                       ng-model="register.password_repeat">
+                <input required type="password" name="password_repeat" placeholder="Password repeat" ng-model="register.password_repeat" password-confirmation="register.password">
+                <div ng-messages="registrationForm.password_repeat.$error">
+                    <small class="error" ng-message="compare" >Password doesn't match the previous entry</small>
+                </div>
             </label>
             <div class="small-12 columns">
                 <h5><small>By clicking on "Create an account", you are agreeing to the Terms of Service and the Privacy Policy.</small></h5>
             </div>
             <hr/>
-            <button id="register" type="submit" name="submit" ng-click="register.register()" class="pure-button pure-button-primary right">
+            <button id="register" type="submit" class="pure-button pure-button-primary right">
                 Create an account
             </button>
 

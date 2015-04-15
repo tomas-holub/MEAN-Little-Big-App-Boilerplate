@@ -8,4 +8,9 @@ var userSchema = new mongoose.Schema({
     lastLogin: Date
 });
 
+userSchema.path('email').validate(function (email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
+}, 'The e-mail is invalid.');
+
 module.exports = mongoose.model('User', userSchema);

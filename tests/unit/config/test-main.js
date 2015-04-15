@@ -17,6 +17,9 @@ requirejs.config({
         'angular-resource': 'bower_components/angular-resource/angular-resource',
         'angular-ui-router': 'bower_components/angular-ui-router/release/angular-ui-router',
         'angular-mocks': 'bower_components/angular-mocks/angular-mocks',
+        'ngStorage':'bower_components/ngstorage/ngStorage',
+        'mm-foundation': 'bower_components/angular-foundation/mm-foundation-tpls',
+        'templates': 'client/js/templates',
         'js': 'client/js'
     },
     shim: {
@@ -30,6 +33,15 @@ requirejs.config({
             deps: ['angular']
         },
         'angular-ui-router':{
+            deps:['angular']
+        },
+        'ngStorage':{
+            deps:['angular']
+        },
+        'mm-foundation':{
+            deps:['angular']
+        },
+        templates:{
             deps:['angular']
         },
         'angular-mocks' : {

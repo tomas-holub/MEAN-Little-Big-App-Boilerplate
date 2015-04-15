@@ -5,8 +5,6 @@ define([
     './timestamp.interceptor',
     './auth.interceptor',
     './request-rejector.interceptor',
-    './tom.service',
-    './article.service',
     './auth.service',
     './user.service'
 ], function(){});
