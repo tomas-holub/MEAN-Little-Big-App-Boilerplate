@@ -1,23 +1,98 @@
 <div class="parallax-background">
 
     <div class="cover">
+
         <div class="image image-zoom">
             <div class="background-gradient">
             </div>
         </div>
+        <div class="title">
+            <div class="small-11 medium-8 large-6 small-centered columns">
+                <h1 class="text-center">Welcome!</h1>
+            </div>
+        </div>
     </div>
-
-    <!--<div class="intro-text">-->
-        <!--scroll for parallax!-->
-        <!--<p><i class="fi-arrow-down"></i></p>-->
-    <!--</div>-->
 </div>
 
 <div class="parallax-content">
 
-    <!--<div ui-view></div>-->
-
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    <div class="row fullWidth">
+        <div class="large-12 columns">
+            <h3>Welcome to my little-big app boileplate!</h3><hr>
+            <div>
+                Main purpose of this repo is to get a well written basic application, with all settings set and working, so it is easy just code the business logic.
+                Check out the main features:
+            </div><hr>
+        </div>
+        <div class="large-3 medium-6 small-12 columns">
+            <div class="panel">
+                <h4>Client</h4>
+                <ul class="disc">
+                    <li>SPA based on Angular.js</li>
+                    <li>Each component is separated to single file, and loaded with require.js</li>
+                    <li>Each module and every method is properly documented, using ng-docs</li>
+                    <li>Transition between views/states is handled by ui-router</li>
+                    <li>Forms are validated using ng-messages module and custom directives</li>
+                    <li>App uses Foundation CSS framework, with angular-foundation module</li>
+                    <li>Unit tests are written using Jasmine testing framework</li>
+                    <li>Karma test runner is used for test execution</li>
+                    <li>End to end tests are written using Protractor</li>
+                </ul>
+            </div>
+        </div>
+        <div class="large-3 medium-6 small-12 columns">
+            <div class="panel">
+                <h4>Server</h4>
+                <ul class="disc">
+                    <li>Server is based on node.js using express framework</li>
+                    <li>Data are stored to mongodb using mongoose npm module</li>
+                    <li>serves client index page and REST api</li>
+                    <li>code is structured to separated files</li>
+                    <li>code is tested using mocha framework</li>
+                </ul>
+            </div>
+        </div>
+        <div class="large-3 medium-6 small-12 columns">
+            <div class="panel">
+                <h4>Build tools</h4>
+                <ul class="disc">
+                    <li>Build is handled using GULP task manager</li>
+                    <li>Currently there are 3 main tasks defined:</li>
+                        <ol>
+                            <li>build for development </li>
+                            <li>build for production</li>
+                            <li>server test runner</li>
+                        </ol>
+                    <li>Main build features:</li>
+                    <ol>
+                        <li>Less compilation</li>
+                        <li>Test execution</li>
+                        <li>Compilation of html templates to js module</li>
+                        <li>Compilation of index.html template based on environment</li>
+                        <li>Concatenation and minification of all JS files resulting in single file</li>
+                        <li>Concatenation and minification of all CSS files resulting in single file</li>
+                    </ol>
+                </ul>
+            </div>
+        </div>
+        <div class="large-3 medium-6 small-12 columns">
+            <div class="panel">
+                <h4>Deploy</h4>
+                <ul class="disc">
+                    <li>Application is prepared to work with OPENSHIFT</li>
+                    <li>Create new application on the OPENSHIFT server</li>
+                    <li>Push this boilerplate to the OPENSHIFT server</li>
+                    <li>Following steps executes:</li>
+                    <ol>
+                        <li>MongoDb cartridge is started</li>
+                        <li>All dependencies from package.json gets installed</li>
+                        <li>npm start gets executed</li>
+                        <li>bower install gets started based on package.json configuration</li>
+                        <li>server gets started</li>
+                        <li>enjoy :)</li>
+                    </ol>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

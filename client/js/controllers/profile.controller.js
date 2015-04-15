@@ -5,13 +5,20 @@
  * Handles scope of the user profile view
  */
 define(['./_module'], function (controllers) {
-    var ProfileController = function ($scope, UserService, $state) {
+    var ProfileController = function ($scope, AuthService, me) {
+
         var profile = this;
 
-        UserService.get().then(function(res){
-            profile.users = res.data;
-        });
+        /**
+         * @ngdoc property
+         * @name user
+         * @propertyOf app.controllers.controller:LogInController
+         * @description
+         * Current user object
+         */
+        this.user = me.data.user;
+
     };
-    ProfileController.$inject = ['$scope', 'UserService', '$state'];
+    ProfileController.$inject = ['$scope', 'AuthService', 'me'];
     controllers.controller('ProfileController', ProfileController);
 });

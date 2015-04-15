@@ -118,6 +118,19 @@ define(['./_module'], function (services) {
                 return $http.post(CONFIG.apiBase + 'logout').then(function (res) {
                     delete $localStorage.token;
                 });
+            },
+
+            /**
+             * @ngdoc method
+             * @name getMe
+             * @methodOf app.services.service:AuthService
+             * @description
+             * Handles http get to REST api get logged user data
+             * @returns {Object} A Promise
+             */
+            getMe: function() {
+                var user = getUserFromToken();
+                return $http.get(CONFIG.apiBase + 'users/' + user._id);
             }
         }
     };

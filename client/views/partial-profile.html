@@ -1,18 +1,18 @@
 <div class="parallax-background">
-    <div class="intro-text">
-        scroll for parallax!
-        {{profile.prd}}
-        <div ng-repeat="user in users">
-            {{user.email}}
+
+
+    <div class="cover">
+        <div class="image image-zoom">
+            <div class="background-gradient"></div>
         </div>
-        <p><i class="fi-arrow-down"></i></p>
     </div>
+
+    Boilerplate
+
 </div>
 
 <div class="parallax-content">
+    {{profile.test}}
+    <h2>Hi {{profile.user.email}}</h2>
     <h3>Welcome on your profile</h3>
-    <div ng-repeat="user in profile.users">
-        {{user.email}}
-    </div>
-
 </div>

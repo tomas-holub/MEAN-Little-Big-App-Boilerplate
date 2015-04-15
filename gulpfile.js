@@ -52,7 +52,7 @@ gulp.task('e2eTests', function () {
 });
 
 gulp.task('serverTests', function () {
-    return gulp.src('tests/server/spec/*.js', {read: false})
+    return gulp.src('tests/server/rest/*.js', {read: false})
         .pipe(mocha({reporter: 'nyan'}));
 });
 

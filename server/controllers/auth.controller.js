@@ -22,24 +22,20 @@ exports.login = function (req, res) {
             return res.send(err);
         }
         if (user) {
-            var userData = new User({
-                email: user.email
+            var expires = Date.now() + config.expiration;
+            var token = jwt.encode({
+                _id:user._id,
+                email: user.email,
+                exp: expires
+            }, config.secret);
+            res.status(200).json({
+                token: token,
+                expires: expires,
+                user: user.toJSON()
             });
         } else {
             return res.status(401).send({message: "Email not found"});
         }
-
-        var expires = Date.now() + config.expiration;
-        var token = jwt.encode({
-            _id:userData._id,
-            email: userData.email,
-            exp: expires
-        }, config.secret);
-        res.status(200).json({
-            token: token,
-            expires: expires,
-            user: userData.toJSON()
-        });
     });
 };
 

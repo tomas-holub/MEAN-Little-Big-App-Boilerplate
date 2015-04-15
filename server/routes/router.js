@@ -8,8 +8,7 @@ var AuthController = require('../controllers/auth.controller');
 
 router.route('/users').get(auth,UserController.get);
 router.route('/users').post(UserController.create);
-router.route('/users/:id').get(UserController.getById);
-router.route('/users/:id').put(auth,UserController.update);
+router.route('/users/:id').get(auth,UserController.getById);
 router.route('/users/:id').delete(auth,UserController.delete);
 
 router.route('/register').post(AuthController.register);

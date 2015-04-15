@@ -109,13 +109,13 @@ define([
                         templateProvider: ['$templateCache', function ($templateCache) {
                             return $templateCache.get('partial-profile.html');
                         }],
-                        controller: 'ProfileController as profile'
-                        //resolve: {
-                        //    'users': ['UserService', '$q', function (UserService, $q) {
-                        //      //  console.log($q.reject('hohohohoo'));
-                        //        return UserService.getUserById();
-                        //    }]
-                        //}
+                        controller: 'ProfileController as profile',
+                        resolve: {
+                            'me': ['AuthService', '$q', function (AuthService, $q) {
+                                // ui-router waits until the promise is resolved and returns its result
+                                return AuthService.getMe();
+                            }]
+                        }
                     }
                 }
             })

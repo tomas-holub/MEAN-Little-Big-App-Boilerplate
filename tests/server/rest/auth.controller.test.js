@@ -11,20 +11,31 @@ var url = 'http://' + config.test.serverIp + ':' + config.test.serverPort;
 
 describe('Authentication', function () {
 
+    var clear = true;
+
     before(function (done) {
         mongoose.connect(connectionString);
         done();
     });
 
     after(function (done) {
-        // Clear the db after each test
-        connect(connectionString, function (err, db) {
-            databaseCleaner.clean(db, function () {
-                console.log('Db clean');
-                db.close();
-            });
-        });
+        mongoose.connection.close();
         done();
+    });
+
+    beforeEach(function(done){
+        if (clear) {
+            // Clear the db after each test
+            connect(connectionString, function (err, db) {
+                databaseCleaner.clean(db, function () {
+                    console.log('Db clean');
+                    db.close();
+                    done();
+                });
+            });
+        } else {
+            done();
+        }
     });
 
     describe('User registration', function () {
@@ -70,6 +81,10 @@ describe('Authentication', function () {
     describe('User login', function () {
         var token;
         it('registers new user', function (done) {
+
+            // don't clear the db for next test
+            clear = false;
+
             var dataRegister = {
                 email: 'test@user.com',
                 password: 'pass',
@@ -89,6 +104,9 @@ describe('Authentication', function () {
         });
 
         it('logs in', function (done) {
+
+            // clear the db for next test
+            clear = true;
 
             var dataLogin = {
                 email: 'test@user.com',
@@ -113,21 +131,6 @@ describe('Authentication', function () {
                     done();
                 });
 
-
-        });
-
-        it('accesses protected route', function (done) {
-            request(url)
-                .get('/api/v1/users')
-                .set('x-access-token', token)
-                .end(function (err, res) {
-                    if (err) {
-                        throw err;
-                    }
-                    res.body[0].should.have.property('email','test@user.com');
-                    res.body[0].should.have.property('password','pass');
-                    done();
-                });
         });
 
     });

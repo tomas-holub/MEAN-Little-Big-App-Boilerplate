@@ -15,16 +15,24 @@ exports.get = function (req, res) {
         if (err) {
             return res.send(err);
         }
-        res.json(users);
+        var allUsers = [];
+        for(var i=0; i<users.length;i++){
+            var user = new User({email:users[i].email});
+            allUsers.push(user);
+        }
+        res.json(allUsers);
     });
 };
 
 exports.getById = function (req, res) {
     if (req.params.id) {
-        User.findOne({_id: req.params.id}, function (err, res) {
+        User.findById(req.params.id, function (err, user) {
             if (user) {
                 var userData = new User({
                     email: user.email
+                });
+                res.status(200).json({
+                    user: userData.toJSON()
                 });
             } else {
                 return res.status(404).send({message: "User with id " + req.params.id + " not found"});

@@ -10,7 +10,6 @@ var auth = function (req, res, next) {
     if (token) {
         try {
             var decoded = jwt.decode(token, config.secret);
-
             if (decoded.exp <= Date.now()) {
                 res.status(400);
                 res.json({
@@ -29,7 +28,7 @@ var auth = function (req, res, next) {
                     return;
                 }
                 User.findOne({email: decoded.email}, function (err, user) {
-                    if (user.email) {
+                    if (user) {
                         res.status(200);
                         next();
                     } else {
