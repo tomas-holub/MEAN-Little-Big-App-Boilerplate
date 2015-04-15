@@ -1,0 +1,6 @@
+/**
+ * Module app.filters
+ */
+define(['angular'], function (angular) {
+    return angular.module('app.filters', []);
+});
