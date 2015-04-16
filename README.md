@@ -3,7 +3,7 @@ Complete setup for middle sized MEAN project with authentication, including resp
 
 [Live DEMO Application](http://best-meanman.rhcloud.com/)
 
-[Genarated Documentation](http://best-meanman.rhcloud.com/docs)
+[Documentation](http://best-meanman.rhcloud.com/docs)
 
 Client 
 - SPA based on Angular.js
