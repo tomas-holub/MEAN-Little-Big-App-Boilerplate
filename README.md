@@ -1,7 +1,11 @@
 # MEAN-Little-Big-App-Boilerplate
 Complete setup for middle sized MEAN project with authentication, including responsive layout, unit and e2e tests, build scripts and much more.. Ready for deploy to RedHat Openshift platform  
 
-Client
+[Live DEMO Application](http://best-meanman.rhcloud.com/)
+
+[Genarated Documentation](http://best-meanman.rhcloud.com/docs)
+
+Client 
 - SPA based on Angular.js
 - Each component is separated to single file, and loaded with require.js
 - Each module and every method is properly documented, using ng-docs
