@@ -9,7 +9,8 @@ var databaseCleaner = new DatabaseCleaner('mongodb');
 var connectionString = 'mongodb://' + config.test.dbHost + ':' + config.test.dbPort + '/' + config.test.dbName;
 var url = 'http://' + config.test.serverIp + ':' + config.test.serverPort;
 
-describe('Authentication', function () {
+
+describe('Authentication tests', function () {
 
     var clear = true;
 
@@ -40,10 +41,11 @@ describe('Authentication', function () {
 
     describe('User registration', function () {
         it('register new user', function (done) {
+
             var data = {
                 email: 'test@user.com',
-                password: 'pass',
-                password_repeat: 'pass'
+                password: '123456',
+                password_repeat: '123456'
             };
             request(url)
                 .post('/api/v1/register')
@@ -56,14 +58,12 @@ describe('Authentication', function () {
                     done();
                 });
         });
-    });
 
-    describe('User registration invalid email', function () {
-        it('fails register new user with wrong email format', function (done) {
+        it('fails to register new user - invalid email', function (done) {
             var data = {
-                email: 'testuser.com',
-                password: 'pass',
-                password_repeat: 'pass'
+                email: 'wrong_email',
+                password: '123456',
+                password_repeat: '123456'
             };
             request(url)
                 .post('/api/v1/register')
@@ -76,24 +76,61 @@ describe('Authentication', function () {
                     done();
                 });
         });
+
+        it('fails to register new user - password to short', function (done) {
+            var data = {
+                email: 'test@user.com',
+                password: '123',
+                password_repeat: '123'
+            };
+            request(url)
+                .post('/api/v1/register')
+                .send(data)
+                .end(function (err, res) {
+                    if (err) {
+                        throw err;
+                    }
+                    res.should.have.property('status', 422);
+                    done();
+                });
+        });
+
+        it('fails to register new user - passwords do not match', function (done) {
+            var data = {
+                email: 'test@user.com',
+                password: '123456',
+                password_repeat: '123'
+            };
+            request(url)
+                .post('/api/v1/register')
+                .send(data)
+                .end(function (err, res) {
+                    if (err) {
+                        throw err;
+                    }
+                    res.should.have.property('status', 422);
+                    done();
+                });
+        });
+
     });
 
-    describe('User login', function () {
+    describe('User login test set', function () {
         var token;
-        it('registers new user', function (done) {
+        it('registers new user, so we can login', function (done) {
 
             // don't clear the db for next test
             clear = false;
 
-            var dataRegister = {
+            var data = {
                 email: 'test@user.com',
-                password: 'pass',
-                password_repeat: 'pass'
+                password: 'password',
+                password_repeat: 'password'
             };
 
             request(url)
                 .post('/api/v1/register')
-                .send(dataRegister)
+                .send(data)
                 .end(function (err, res) {
                     if (err) {
                         throw err;
@@ -110,8 +147,7 @@ describe('Authentication', function () {
 
             var dataLogin = {
                 email: 'test@user.com',
-                password: 'pass',
-                password_repeat: 'pass'
+                password: 'password'
             };
 
             request(url)
@@ -125,8 +161,8 @@ describe('Authentication', function () {
                     }
                     res.should.have.property('status', 200);
                     res.body.should.have.property('token');
-                    res.body.should.have.property('user');
                     res.body.should.have.property('expires');
+                    res.body.should.not.have.property('user');
                     token = res.body.token;
                     done();
                 });

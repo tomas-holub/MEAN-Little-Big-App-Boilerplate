@@ -1,3 +1,6 @@
+/**
+ * Module app
+ */
 define([
     'angular',
     'angular-route',
@@ -11,7 +14,7 @@ define([
     'directives/_loader',
     'templates'
 ], function (angular) {
-    return angular.module('tom', [
+    return angular.module('app', [
         'ngRoute',
         'ui.router',
         'ngStorage',

@@ -1,5 +1,6 @@
+/**
+ * Loader for module directives
+ */
 define([
-    './button.directive',
-    './sample.directives',
     './password.directive'
 ],function(){});

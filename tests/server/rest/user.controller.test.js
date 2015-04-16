@@ -76,8 +76,8 @@ describe('User controller', function () {
     function register(done){
         var userData = {
             email: 'loged@user.com',
-            password: 'pass',
-            password_repeat: 'pass'
+            password: 'password',
+            password_repeat: 'password'
         };
         request(url)
             .post('/api/v1/register')
@@ -93,8 +93,7 @@ describe('User controller', function () {
     function login(done) {
         var userData = {
             email: 'loged@user.com',
-            password: 'pass',
-            password_repeat: 'pass'
+            password: 'password'
         };
         request(url)
             .post('/api/v1/login')
@@ -106,7 +105,7 @@ describe('User controller', function () {
                     throw err;
                 }
                 token = res.body.token;
-                id    = res.body.user._id;
+                id    = res.body._id;
                 done();
             });
     }

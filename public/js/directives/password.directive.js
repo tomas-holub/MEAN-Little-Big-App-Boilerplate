@@ -1,3 +1,9 @@
+/**
+ * @ngdoc directive
+ * @name app.directives.directive:passwordConfirmation
+ * @description
+ * Validates that password confirmation is equal to password
+ */
 define(['./_module'], function(directives){
     directives.directive('passwordConfirmation',  function() {
         return {

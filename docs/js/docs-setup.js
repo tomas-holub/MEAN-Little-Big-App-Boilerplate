@@ -10,7 +10,7 @@ NG_DOCS={
       "type": "controller",
       "moduleName": "app.controllers",
       "shortDescription": "Handles scope of the login form view",
-      "keywords": "api app based changes controller controllers data displays error executes form general handles login message method ng-models profile property propety scope submit successful user validity view"
+      "keywords": "api app based changes controller controllers current data displays error executes form general handles invalid login message method ng-models object profile property scope submit successful user validity view"
     },
     {
       "section": "api",
@@ -28,7 +28,16 @@ NG_DOCS={
       "type": "controller",
       "moduleName": "app.controllers",
       "shortDescription": "Handles scope of the register form view",
-      "keywords": "api app controller controllers data form handles method ng-models register registration scope user view"
+      "keywords": "api app based controller controllers data displays error executes form general handles invalid message method ng-models property register registration scope submit user validity view"
+    },
+    {
+      "section": "api",
+      "id": "app.directives.directive:passwordConfirmation",
+      "shortName": "passwordConfirmation",
+      "type": "directive",
+      "moduleName": "app.directives",
+      "shortDescription": "Validates that password confirmation is equal to password",
+      "keywords": "api app confirmation directive directives equal password validates"
     },
     {
       "section": "api",
@@ -36,8 +45,8 @@ NG_DOCS={
       "shortName": "reverseFilter",
       "type": "filter",
       "moduleName": "app.filters",
-      "shortDescription": "Reverse the given string",
-      "keywords": "api app filter filters reverse string"
+      "shortDescription": "Reverses the given string",
+      "keywords": "api app filter filters reverses string"
     },
     {
       "section": "api",
@@ -55,7 +64,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "app.services",
       "shortDescription": "Manages user registration, login, logout and user-logged checks",
-      "keywords": "api app based call checks client config create decodes deletes doesn existence existing exists extracts getuserfromtoken handles http includes invalidates isloggedin jwt local locates login logout manages method middle object payload post promise register registration remember request rest server service services status storage str string token urlbase64decode user user-logged valid"
+      "keywords": "api app based call checks client config create data decodes deletes doesn existence existing exists extracts getme getuserfromtoken handles http includes invalidates isloggedin jwt local locates logged login logout manages method middle object payload post promise register registration remember request rest server service services status storage str string token urlbase64decode user user-logged valid"
     },
     {
       "section": "api",

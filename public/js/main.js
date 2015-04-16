@@ -1,5 +1,7 @@
+/**
+ * Configuration of require.js
+ */
 require.config({
-   // basePath:'./',
     paths: {
         'angular': '../../bower_components/angular/angular',
         'domReady': '../../bower_components/domReady/domReady',

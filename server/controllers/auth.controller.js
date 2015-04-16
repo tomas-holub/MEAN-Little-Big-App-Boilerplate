@@ -15,23 +15,28 @@ exports.register = function (req, res) {
 
 exports.login = function (req, res) {
     User.findOne({
-        email: req.body.email,
-        password: req.body.password
+        email: req.body.email
     }, function (err, user) {
         if (err) {
             return res.send(err);
         }
         if (user) {
-            var expires = Date.now() + config.expiration;
-            var token = jwt.encode({
-                _id:user._id,
-                email: user.email,
-                exp: expires
-            }, config.secret);
-            res.status(200).json({
-                token: token,
-                expires: expires,
-                user: user.toJSON()
+            user.comparePassword(req.body.password, function(isMatch) {
+                if(isMatch){
+                    var expires = Date.now() + config.expiration;
+                    var token = jwt.encode({
+                        _id:user._id,
+                        email: user.email,
+                        exp: expires
+                    }, config.secret);
+                    res.status(200).json({
+                        _id:user._id,
+                        token: token,
+                        expires: expires
+                    });
+                } else {
+                    return res.status(401).send({message: "Invalid password"});
+                }
             });
         } else {
             return res.status(401).send({message: "Email not found"});

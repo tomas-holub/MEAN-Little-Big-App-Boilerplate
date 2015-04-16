@@ -7,4 +7,5 @@ describe('Welcome page', function () {
     it('should load the home page', function () {
         expect(element(by.id('home')).isPresent()).toBeTruthy();
     });
+
 });
