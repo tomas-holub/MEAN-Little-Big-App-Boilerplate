@@ -1,3 +1,5 @@
+# Deprecated version (still works, but outdated)
+
 # MEAN-Little-Big-App-Boilerplate
 Complete setup for middle sized MEAN project with authentication, including responsive layout, unit and e2e tests, build scripts and much more.. Ready for deploy to RedHat Openshift platform  
 
