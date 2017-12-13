@@ -18,7 +18,7 @@
     "jade": "~1.9.1",
     "jwt-simple": "^0.3.0",
     "mongodb": "*",
-    "mongoose": "^3.8.24",
+    "mongoose": "~4.4",
     "monk": "*",
     "morgan": "~1.5.1",
     "passport": "^0.2.1",
